@@ -12,7 +12,6 @@ import com.gallosalocin.instafirebase.fragments.HomeFragment;
 import com.gallosalocin.instafirebase.fragments.NotificationFragment;
 import com.gallosalocin.instafirebase.fragments.ProfileFragment;
 import com.gallosalocin.instafirebase.fragments.SearchFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.nav_home:
                     selectorFragment = new HomeFragment();
                     break;
@@ -46,13 +45,23 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
 
-            if (selectorFragment != null){
+            if (selectorFragment != null) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectorFragment).commit();
             }
 
             return true;
         });
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        Bundle intent = getIntent().getExtras();
+        if (intent != null) {
+            String profileId = intent.getString("publisherId");
+
+            getSharedPreferences("PROFILE", MODE_PRIVATE).edit().putString("profileId", profileId).apply();
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+            binding.bottomNavigation.setSelectedItemId(R.id.nav_profile);
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        }
     }
 }

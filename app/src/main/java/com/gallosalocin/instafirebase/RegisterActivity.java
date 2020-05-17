@@ -68,9 +68,9 @@ public class RegisterActivity extends AppCompatActivity {
             map.put("email", email);
             map.put("id", auth.getCurrentUser().getUid());
             map.put("bio", "");
-            map.put("imageurl","default");
+            map.put("imageUrl","default");
 
-            dbRef.child("Users").child(auth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(task -> {
+            dbRef.child("users").child(auth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
                     pd.dismiss();
                     Toast.makeText(this, "Update the profile for better experience", Toast.LENGTH_SHORT).show();

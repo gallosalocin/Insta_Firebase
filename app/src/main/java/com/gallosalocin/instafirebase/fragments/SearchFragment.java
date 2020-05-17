@@ -80,7 +80,7 @@ public class SearchFragment extends Fragment {
     }
 
     private void readTags() {
-        FirebaseDatabase.getInstance().getReference().child("HashTags").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("hashTags").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 hashTagsList.clear();
@@ -102,7 +102,7 @@ public class SearchFragment extends Fragment {
     }
 
     private void readUsers() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users");
         reference.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -125,7 +125,7 @@ public class SearchFragment extends Fragment {
     }
 
     private void searchUser(String s) {
-        Query query = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("username").startAt(s).endAt(s + "\uf8ff");
+        Query query = FirebaseDatabase.getInstance().getReference().child("users").orderByChild("username").startAt(s).endAt(s + "\uf8ff");
 
         query.addValueEventListener(new ValueEventListener() {
             @Override

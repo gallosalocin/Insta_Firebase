@@ -62,7 +62,7 @@ public class PostActivity extends AppCompatActivity {
 
         if (imageUri != null) {
             final StorageReference filePath =
-                    FirebaseStorage.getInstance().getReference("Posts").child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
+                    FirebaseStorage.getInstance().getReference("posts").child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
 
             StorageTask uploadTask = filePath.putFile(imageUri);
             uploadTask.continueWithTask(task -> {
@@ -74,25 +74,25 @@ public class PostActivity extends AppCompatActivity {
                 Uri downloadUri = (Uri) task.getResult();
                 imageUrl = downloadUri.toString();
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Posts");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("posts");
                 String postId = ref.push().getKey();
 
                 HashMap<String, Object> map = new HashMap<>();
-                map.put("postid", postId);
-                map.put("imageurl", imageUrl);
+                map.put("postId", postId);
+                map.put("imageUrl", imageUrl);
                 map.put("description", binding.description.getText().toString());
                 map.put("publisher", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
                 ref.child(postId).setValue(map);
 
-                DatabaseReference hashTagRef = FirebaseDatabase.getInstance().getReference().child("HashTags");
+                DatabaseReference hashTagRef = FirebaseDatabase.getInstance().getReference().child("hashTags");
                 List<String> hashTags = binding.description.getHashtags();
                 if (!hashTags.isEmpty()) {
                     for (String tag : hashTags) {
                         map.clear();
 
                         map.put("tag", tag.toLowerCase());
-                        map.put("postid", postId);
+                        map.put("postId", postId);
 
                         hashTagRef.child(tag.toLowerCase()).child(postId).setValue(map);
                     }
@@ -133,7 +133,7 @@ public class PostActivity extends AppCompatActivity {
         super.onStart();
 
         ArrayAdapter<Hashtag> hashtagAdapter = new HashtagArrayAdapter<>(getApplicationContext());
-        FirebaseDatabase.getInstance().getReference().child("HashTags").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("hashTags").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){

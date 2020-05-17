@@ -6,15 +6,15 @@ public class User {
     private String email;
     private String username;
     private String bio;
-    private String imageurl;
+    private String imageUrl;
     private String id;
 
-    public User(String name, String email, String username, String bio, String imageurl, String id) {
+    public User(String name, String email, String username, String bio, String imageUrl, String id) {
         this.name = name;
         this.email = email;
         this.username = username;
         this.bio = bio;
-        this.imageurl = imageurl;
+        this.imageUrl = imageUrl;
         this.id = id;
     }
 
@@ -53,12 +53,12 @@ public class User {
         this.bio = bio;
     }
 
-    public String getImageurl() {
-        return imageurl;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getId() {

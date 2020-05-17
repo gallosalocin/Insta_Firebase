@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -26,8 +27,7 @@
                 android:id="@+id/profile_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="5dp"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_margin="5dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/username"
@@ -35,7 +35,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="5dp"
-                android:text="username"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -52,7 +51,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintDimensionRatio="1:1"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -89,7 +90,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="123 likes"
             android:textColor="@color/colorAccent"
             android:textStyle="bold" />
 
@@ -98,7 +98,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Nioolas"
             android:textColor="@color/design_default_color_primary_dark"
             android:textStyle="bold" />
 
@@ -109,7 +108,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Nicolas description"
             android:textColor="@color/colorAccent" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -119,7 +117,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </RelativeLayout>
