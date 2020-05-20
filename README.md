@@ -12,7 +12,7 @@ You can:
 
 
 ## Tech/Framework/Library
-- [Kotlin](https://developer.android.com/kotlin/get-started)
+- [Java](https://developer.android.com/studio/write/java8-support)
 - [AndroidX](https://developer.android.com/jetpack/androidx)
 - [ViewBinding](https://developer.android.com/topic/libraries/view-binding)
 - [Firebase](https://developer.android.com/studio/write/firebase)
